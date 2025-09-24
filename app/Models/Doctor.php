@@ -13,6 +13,11 @@ class Doctor extends Model
         'status',
     ];
 
+    public function user()
+    {
+        return $this->morphOne(Entity::class, 'model');
+    }
+
     public function clinic()
     {
         return $this->belongsTo(Clinic::class);

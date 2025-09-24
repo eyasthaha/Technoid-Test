@@ -35,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
        
 
         Route::get('/doctors', [DoctorController::class, 'list']);
+        Route::post('/doctors', [ClinicController::class, 'create']);
+        Route::put('/doctors/{id}', [ClinicController::class, 'updateDoctorStatus']);
 
     });
 
