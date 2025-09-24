@@ -12,4 +12,9 @@ class Doctor extends Model
         'speciality',
         'status',
     ];
+
+    public function clinic()
+    {
+        return $this->belongsTo(Clinic::class);
+    }
 }

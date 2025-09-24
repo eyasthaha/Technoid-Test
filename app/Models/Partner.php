@@ -14,4 +14,14 @@ class Partner extends Model
         'name',
         'contact_email'
     ];
+
+    public function clinic()
+    {
+        return $this->hasMany(Clinic::class);
+    }
+
+    public function doctors()
+    {
+        return $this->hasManyThrough(Doctor::class, Clinic::class);
+    }
 }

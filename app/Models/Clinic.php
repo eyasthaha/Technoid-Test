@@ -12,4 +12,9 @@ class Clinic extends Model
         'city',
         'type',
     ];
+
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 }
