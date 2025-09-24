@@ -28,26 +28,28 @@ class PartnerSeeder extends Seeder
         
         $password = Hash::make('password');
 
+        $entitiesData = [];
+
         // Create Partner Admin Entities
         foreach ($partnerIds as $partner) {
-            $entitiesData = [];
-                $now = now();
-                $entitiesData[] = [
-                    'name' => "{$partner->name} {$partner->id} Admin",
-                    'email' => $partner->contact_email,
-                    'password' => $password,
-                    'role' => 'partner_admin',
-                    'model_type' => 'Partner',
-                    'model_id' => $partner->id,
-                    'created_at' => $now,
-                    'updated_at' => $now,
-                ];
+
+            $now = now();
+            $entitiesData[] = [
+                'name' => "{$partner->name} {$partner->id} Admin",
+                'email' => $partner->contact_email,
+                'password' => $password,
+                'role' => 'partner_admin',
+                'model_type' => 'Partner',
+                'model_id' => $partner->id,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
 
         }
 
         // Insert in batches of 1000.
         foreach (array_chunk($entitiesData, 1000) as $chunk) {
             DB::table('users')->insert($chunk);            
-        }      
+        }
     }
 }
