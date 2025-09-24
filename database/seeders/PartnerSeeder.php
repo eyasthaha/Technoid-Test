@@ -15,24 +15,22 @@ class PartnerSeeder extends Seeder
      */
     public function run(): void
     {
+        //Creating 5000 partners.
         Partner::factory()->count(5000)->create();
 
-        // Fetch inserted IDs
+        // Fetch the latest 5000 partner IDs with names and contact emails
         $partnerIds = DB::table('partners')
-            ->latest('id','name') // fetch newest 5000 partners
+            ->latest('id','name')
             ->limit(5000)
             ->get(['id','name','contact_email'])
             ->toArray();
 
+        
         $password = Hash::make('password');
 
-        $partnerChunks = array_chunk($partnerIds, 500);
-
-        foreach ($partnerChunks as $chunk) {
+        // Create Partner Admin Entities
+        foreach ($partnerIds as $partner) {
             $entitiesData = [];
-
-            foreach ($chunk as $partner) {
-                // If $partner is object, use $partner->id and $partner->name
                 $now = now();
                 $entitiesData[] = [
                     'name' => "{$partner->name} {$partner->id} Admin",
@@ -44,10 +42,12 @@ class PartnerSeeder extends Seeder
                     'created_at' => $now,
                     'updated_at' => $now,
                 ];
-            }
 
-            // Bulk insert this chunk
-            DB::table('users')->insert($entitiesData);
         }
+
+        // Insert in batches of 1000.
+        foreach (array_chunk($entitiesData, 1000) as $chunk) {
+            DB::table('users')->insert($chunk);            
+        }      
     }
 }
