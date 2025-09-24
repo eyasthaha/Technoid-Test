@@ -17,9 +17,17 @@ class Entity extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'model_type',
+        'model_id'
     ];
 
     protected $hidden = [
         'password',
     ];
+
+    public function model()
+    {
+        return $this->morphTo();
+    }
 }
