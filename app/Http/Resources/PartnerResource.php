@@ -18,7 +18,7 @@ class PartnerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'contact_email' => $this->contact_email,
-            'clinic_count' => $this->clinics_count ?? 0,
+            'clinic_count' => $this->clinic_count ?? 0,
             'doctor_count' => $this->doctors_count ?? 0,
         ];
 
