@@ -34,7 +34,7 @@ class PartnerResource extends JsonResource
                                     ? $clinic->doctors->map(fn($d) => [
                                         'id' => $d->id,
                                         'name' => $d->name,
-                                        'specialty' => $d->specialty,
+                                        'specialty' => $d->speciality,
                                         'status' => $d->status,
                                     ])
                                     : [],

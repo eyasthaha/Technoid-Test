@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DoctorResource;
 use App\Services\DoctorService;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class DoctorController extends Controller
     {
         // You can implement filtering logic here if needed
         $doctors = $this->doctorService->filter($request->toArray());
-        return response()->json($doctors);
+        
+        return DoctorResource::collection($doctors);
     }
     
 }

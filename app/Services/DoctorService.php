@@ -25,6 +25,7 @@ class DoctorService
                     ->when($user->role === 'clinic_admin', function ($query) use ($user) {
                             $query->where('clinic_id', $user->model_id);
                     })
+                    ->with('user')
                     ->paginate(50);
 
     }
