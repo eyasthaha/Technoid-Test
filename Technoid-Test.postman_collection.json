@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "61f4c9c9-8a1f-4666-a305-4d8efea2ad81",
+		"name": "Technoid-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19641064"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "clinic@demo.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api/login",
+					"host": [
+						"api"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "pollich.camron@herzog.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api/user",
+					"host": [
+						"api"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PartnersList",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api/partners",
+					"host": [
+						"api"
+					],
+					"path": [
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPartners",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api/partners/1",
+					"host": [
+						"api"
+					],
+					"path": [
+						"partners",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clinics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api/clinics?partner_id=1",
+					"host": [
+						"api"
+					],
+					"path": [
+						"clinics"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "East",
+							"disabled": true
+						},
+						{
+							"key": "partner_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api/doctors",
+					"host": [
+						"api"
+					],
+					"path": [
+						"doctors"
+					],
+					"query": [
+						{
+							"key": "specialty",
+							"value": "cardiology",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Doctor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Doctor 1",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "doc2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "speciality",
+							"value": "neurology",
+							"type": "text"
+						},
+						{
+							"key": "clinic_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api/doctors",
+					"host": [
+						"api"
+					],
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update doctor status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "status",
+							"value": "inactive",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api/doctors/16",
+					"host": [
+						"api"
+					],
+					"path": [
+						"doctors",
+						"16"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"let defaultBaseUrl = \"http://127.0.0.1:8000/\";\r",
+					"let currentUrl = pm.request.url.toString();\r",
+					"\r",
+					"// If it doesn’t already include the base URL, prepend it\r",
+					"pm.request.url = defaultBaseUrl + currentUrl;\r",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
